@@ -1,7 +1,6 @@
-
 import React, { useMemo, useState } from 'react';
 import Layout from '@/components/Layout';
-import { kpiData, KPI } from '@/data/kpiData';
+import { kpiData } from '@/data/kpiData';
 import { useRules } from '@/context/RulesContext';
 import KPICard from '@/components/dashboard/KPICard';
 import KPIStatusChart from '@/components/dashboard/KPIStatusChart';
@@ -11,6 +10,7 @@ import KPIOwnerChart from '@/components/dashboard/KPIOwnerChart';
 import KPITable from '@/components/dashboard/KPITable';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { LayoutDashboard } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const { rules } = useRules();
@@ -100,19 +100,30 @@ const Dashboard: React.FC = () => {
   const flaggedCount = evaluatedKPIs.filter(item => item.flaggedRules.length > 0).length;
   
   return (
-    <Layout>
+    <Layout className="bg-slate-50">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col mb-6">
-          <h1 className="text-3xl font-bold mb-2">KPI Performance Dashboard</h1>
+          <div className="flex items-center gap-2 mb-2">
+            <LayoutDashboard className="h-6 w-6 text-primary" />
+            <h1 className="text-3xl font-bold">KPI Performance Dashboard</h1>
+          </div>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <p className="text-muted-foreground">
-              Active rules: {activeRules.length} | KPIs with issues: {flaggedCount} of {filteredKPIs.length}
-            </p>
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-md shadow-sm border">
+              <span className="text-sm font-medium">Active rules:</span>
+              <span className="bg-primary/10 text-primary px-2 py-0.5 rounded font-medium">{activeRules.length}</span>
+              <span className="mx-1">|</span>
+              <span className="text-sm font-medium">KPIs with issues:</span>
+              <span className={cn("px-2 py-0.5 rounded font-medium", 
+                flaggedCount > 0 ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+              )}>
+                {flaggedCount} of {filteredKPIs.length}
+              </span>
+            </div>
             <div className="flex flex-wrap gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-sm">Business Units:</span>
+              <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-md shadow-sm border">
+                <span className="text-sm font-medium">Business Units:</span>
                 <Select value={businessUnitFilter} onValueChange={setBusinessUnitFilter}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[180px] h-8 border-0 shadow-none bg-transparent">
                     <SelectValue placeholder="All" />
                   </SelectTrigger>
                   <SelectContent>
@@ -122,10 +133,10 @@ const Dashboard: React.FC = () => {
                   </SelectContent>
                 </Select>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm">KPI Type:</span>
+              <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-md shadow-sm border">
+                <span className="text-sm font-medium">KPI Type:</span>
                 <Select value={kpiTypeFilter} onValueChange={setKPITypeFilter}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[180px] h-8 border-0 shadow-none bg-transparent">
                     <SelectValue placeholder="All" />
                   </SelectTrigger>
                   <SelectContent>
@@ -140,48 +151,48 @@ const Dashboard: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <Card>
-            <CardHeader className="pb-2">
+          <Card className="shadow-md">
+            <CardHeader className="pb-2 bg-card/50 border-b">
               <CardTitle className="text-md">KPI Breakdown By Status</CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
+            <CardContent className="pt-4">
               <KPIStatusChart kpis={filteredKPIs} />
             </CardContent>
           </Card>
           
-          <Card>
-            <CardHeader className="pb-2">
+          <Card className="shadow-md">
+            <CardHeader className="pb-2 bg-card/50 border-b">
               <CardTitle className="text-md">KPI Distribution By Business Unit</CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
+            <CardContent className="pt-4">
               <KPIBusinessUnitChart kpis={filteredKPIs} />
             </CardContent>
           </Card>
           
-          <Card>
-            <CardHeader className="pb-2">
+          <Card className="shadow-md">
+            <CardHeader className="pb-2 bg-card/50 border-b">
               <CardTitle className="text-md">KPI Status Breakdown by Strategic Objective</CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
+            <CardContent className="pt-4">
               <KPIObjectiveChart kpis={filteredKPIs} />
             </CardContent>
           </Card>
           
-          <Card>
-            <CardHeader className="pb-2">
+          <Card className="shadow-md">
+            <CardHeader className="pb-2 bg-card/50 border-b">
               <CardTitle className="text-md">KPI Breakdown by Owner</CardTitle>
             </CardHeader>
-            <CardContent className="pt-0">
+            <CardContent className="pt-4">
               <KPIOwnerChart kpis={filteredKPIs} />
             </CardContent>
           </Card>
         </div>
         
-        <Card className="mb-6">
-          <CardHeader className="pb-2">
+        <Card className="mb-6 shadow-md">
+          <CardHeader className="pb-2 bg-card/50 border-b">
             <CardTitle className="text-md">KPI Details</CardTitle>
           </CardHeader>
-          <CardContent className="pt-0">
+          <CardContent className="pt-4">
             <KPITable kpis={evaluatedKPIs} />
           </CardContent>
         </Card>
