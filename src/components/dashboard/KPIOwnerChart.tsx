@@ -36,14 +36,14 @@ const KPIOwnerChart: React.FC<KPIOwnerChartProps> = ({ kpis }) => {
   ];
   
   const chartConfig = {
-    divisionOwner: { label: 'Division Owner', theme: { light: '#3b82f6' } },
-    dylanGreen: { label: 'Dylan Green', theme: { light: '#7e22ce' } },
-    businessHead: { label: 'Business Head', theme: { light: '#f97316' } },
-    jamesMiller: { label: 'James Miller', theme: { light: '#0ea5e9' } },
-    stephenGmel: { label: 'Stephen Gmel', theme: { light: '#ec4899' } },
-    notAssigned: { label: 'Not Assigned', theme: { light: '#64748b' } },
-    janeSmith: { label: 'Jane Smith', theme: { light: '#14b8a6' } },
-    johnDoe: { label: 'John Doe', theme: { light: '#8b5cf6' } },
+    divisionOwner: { label: 'Division Owner', theme: { light: '#3b82f6', dark: '#3b82f6' } },
+    dylanGreen: { label: 'Dylan Green', theme: { light: '#7e22ce', dark: '#7e22ce' } },
+    businessHead: { label: 'Business Head', theme: { light: '#f97316', dark: '#f97316' } },
+    jamesMiller: { label: 'James Miller', theme: { light: '#0ea5e9', dark: '#0ea5e9' } },
+    stephenGmel: { label: 'Stephen Gmel', theme: { light: '#ec4899', dark: '#ec4899' } },
+    notAssigned: { label: 'Not Assigned', theme: { light: '#64748b', dark: '#64748b' } },
+    janeSmith: { label: 'Jane Smith', theme: { light: '#14b8a6', dark: '#14b8a6' } },
+    johnDoe: { label: 'John Doe', theme: { light: '#8b5cf6', dark: '#8b5cf6' } },
   };
 
   return (

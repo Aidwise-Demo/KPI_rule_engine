@@ -11,6 +11,7 @@ import KPITable from '@/components/dashboard/KPITable';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LayoutDashboard } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 const Dashboard: React.FC = () => {
   const { rules } = useRules();

@@ -32,7 +32,7 @@ const KPIObjectiveChart: React.FC<KPIObjectiveChartProps> = ({ kpis }) => {
   }, [kpis]);
   
   const chartConfig = {
-    count: { label: 'Count', theme: { light: '#3b82f6' } },
+    count: { label: 'Count', theme: { light: '#3b82f6', dark: '#3b82f6' } },
   };
 
   return (

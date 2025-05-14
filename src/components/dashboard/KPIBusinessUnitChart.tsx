@@ -33,11 +33,11 @@ const KPIBusinessUnitChart: React.FC<KPIBusinessUnitChartProps> = ({ kpis }) => 
   ];
   
   const chartConfig = {
-    corporateDivision: { label: 'Corporate Division', theme: { light: '#3b82f6' } },
-    corpBranch: { label: 'Corp Branch', theme: { light: '#1e40af' } },
-    deptOfSI: { label: 'Dept of SI', theme: { light: '#f97316' } },
-    educationPrograms: { label: 'Education Programs', theme: { light: '#7e22ce' } },
-    notAssigned: { label: 'Not Assigned', theme: { light: '#64748b' } },
+    corporateDivision: { label: 'Corporate Division', theme: { light: '#3b82f6', dark: '#3b82f6' } },
+    corpBranch: { label: 'Corp Branch', theme: { light: '#1e40af', dark: '#1e40af' } },
+    deptOfSI: { label: 'Dept of SI', theme: { light: '#f97316', dark: '#f97316' } },
+    educationPrograms: { label: 'Education Programs', theme: { light: '#7e22ce', dark: '#7e22ce' } },
+    notAssigned: { label: 'Not Assigned', theme: { light: '#64748b', dark: '#64748b' } },
   };
 
   return (

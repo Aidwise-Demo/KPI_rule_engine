@@ -31,11 +31,11 @@ const KPIStatusChart: React.FC<KPIStatusChartProps> = ({ kpis }) => {
   };
 
   const chartConfig = {
-    onTrack: { label: 'On Track', theme: { light: '#4ade80' } },
-    offTrack: { label: 'Off Track', theme: { light: '#ef4444' } },
-    alert: { label: 'Alert', theme: { light: '#f59e0b' } },
-    harvested: { label: 'Harvested', theme: { light: '#3b82f6' } },
-    toCommence: { label: 'To Commence', theme: { light: '#6b7280' } },
+    onTrack: { label: 'On Track', theme: { light: '#4ade80', dark: '#4ade80' } },
+    offTrack: { label: 'Off Track', theme: { light: '#ef4444', dark: '#ef4444' } },
+    alert: { label: 'Alert', theme: { light: '#f59e0b', dark: '#f59e0b' } },
+    harvested: { label: 'Harvested', theme: { light: '#3b82f6', dark: '#3b82f6' } },
+    toCommence: { label: 'To Commence', theme: { light: '#6b7280', dark: '#6b7280' } },
   };
 
   return (
