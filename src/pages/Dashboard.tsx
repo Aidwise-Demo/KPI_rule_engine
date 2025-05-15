@@ -1,4 +1,3 @@
-
 import React, { useEffect, useMemo } from 'react';
 import Layout from '@/components/Layout';
 import { useRules } from '@/context/RulesContext';
@@ -23,24 +22,40 @@ const Dashboard: React.FC = () => {
     filteredKPIs
   } = useKPIFilters();
   
-  const { evaluatedKPIs, flaggedCount } = useKPIEvaluation(filteredKPIs, activeRules);
+  const { evaluatedKPIs } = useKPIEvaluation(filteredKPIs, rules);
   
-  // Filter KPIs that have been flagged by active rules
-  const flaggedKPIs = useMemo(() => {
+  // Only show KPIs that are NOT flagged by active rules
+  const displayedKPIs = useMemo(() => {
     return evaluatedKPIs
-      .filter(item => item.flaggedRules.length > 0)
+      .filter(item => {
+        // If no rules are active, show all KPIs
+        if (activeRules.length === 0) return true;
+        
+        // For each active rule, check if this KPI is flagged by it
+        const activeRuleIds = activeRules.map(rule => rule.id);
+        const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
+          const flaggingRule = rules.find(r => r.name === flaggedRule);
+          return flaggingRule && activeRuleIds.includes(flaggingRule.id);
+        });
+        
+        // Only display KPIs that are NOT flagged by any active rules
+        return !flaggedByActiveRules;
+      })
       .map(item => ({
         ...item.kpi,
-        hasFlagged: true
+        hasFlagged: false // They're not flagged since we're filtering those out
       }));
-  }, [evaluatedKPIs]);
+  }, [evaluatedKPIs, activeRules, rules]);
   
   // Debug logging
   useEffect(() => {
     console.log("Active rules changed:", activeRules.length);
-    console.log("Flagged KPIs:", flaggedCount);
-    console.log("Filtered flagged KPIs:", flaggedKPIs.length);
-  }, [activeRules, flaggedCount, flaggedKPIs.length]);
+    console.log("Total KPIs:", filteredKPIs.length);
+    console.log("Displayed KPIs after filtering:", displayedKPIs.length);
+  }, [activeRules, filteredKPIs.length, displayedKPIs.length]);
+  
+  // Count of KPIs removed by active rules
+  const removedCount = filteredKPIs.length - displayedKPIs.length;
   
   return (
     <Layout className={cn("bg-slate-50")}>
@@ -52,15 +67,39 @@ const Dashboard: React.FC = () => {
           setKPITypeFilter={setKPITypeFilter}
           businessUnits={businessUnits}
           activeRules={activeRules.length}
-          flaggedCount={flaggedCount}
+          flaggedCount={removedCount}
           totalKPIs={filteredKPIs.length}
         />
         
-        <DashboardCharts filteredKPIs={flaggedKPIs} />
+        <DashboardCharts filteredKPIs={displayedKPIs} />
         
-        <KPIDetailTable evaluatedKPIs={evaluatedKPIs.filter(item => item.flaggedRules.length > 0)} />
+        <KPIDetailTable evaluatedKPIs={evaluatedKPIs.filter(item => {
+          // If no rules are active, show all KPIs
+          if (activeRules.length === 0) return true;
+          
+          // Otherwise, show KPIs that aren't flagged by any active rule
+          const activeRuleIds = activeRules.map(rule => rule.id);
+          const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
+            const flaggingRule = rules.find(r => r.name === flaggedRule);
+            return flaggingRule && activeRuleIds.includes(flaggingRule.id);
+          });
+          
+          return !flaggedByActiveRules;
+        })} />
         
-        <KPICardGrid evaluatedKPIs={evaluatedKPIs.filter(item => item.flaggedRules.length > 0)} />
+        <KPICardGrid evaluatedKPIs={evaluatedKPIs.filter(item => {
+          // If no rules are active, show all KPIs
+          if (activeRules.length === 0) return true;
+          
+          // Otherwise, show KPIs that aren't flagged by any active rule
+          const activeRuleIds = activeRules.map(rule => rule.id);
+          const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
+            const flaggingRule = rules.find(r => r.name === flaggedRule);
+            return flaggingRule && activeRuleIds.includes(flaggingRule.id);
+          });
+          
+          return !flaggedByActiveRules;
+        })} />
       </div>
     </Layout>
   );
