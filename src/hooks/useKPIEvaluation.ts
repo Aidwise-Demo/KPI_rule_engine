@@ -5,6 +5,7 @@ import { Rule } from '@/types/rules';
 
 export const useKPIEvaluation = (kpis: KPI[], activeRules: Rule[]) => {
   const evaluatedKPIs = useMemo(() => {
+    console.log("Re-evaluating KPIs with active rules:", activeRules.map(r => r.name));
     return kpis.map(kpi => {
       const flaggedRules = activeRules
         .filter(rule => {

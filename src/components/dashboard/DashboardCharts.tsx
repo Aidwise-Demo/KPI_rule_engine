@@ -8,7 +8,7 @@ import KPIOwnerChart from '@/components/dashboard/KPIOwnerChart';
 import { KPI } from '@/data/kpiData';
 
 interface DashboardChartsProps {
-  filteredKPIs: KPI[];
+  filteredKPIs: (KPI & { hasFlagged?: boolean })[];
 }
 
 const DashboardCharts: React.FC<DashboardChartsProps> = ({ filteredKPIs }) => {

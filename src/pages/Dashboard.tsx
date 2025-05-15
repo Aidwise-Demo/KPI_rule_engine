@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { useRules } from '@/context/RulesContext';
 import { useKPIFilters } from '@/hooks/useKPIFilters';
@@ -8,6 +8,7 @@ import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardCharts from '@/components/dashboard/DashboardCharts';
 import KPIDetailTable from '@/components/dashboard/KPIDetailTable';
 import KPICardGrid from '@/components/dashboard/KPICardGrid';
+import { cn } from '@/lib/utils';
 
 const Dashboard: React.FC = () => {
   const { rules } = useRules();
@@ -24,8 +25,14 @@ const Dashboard: React.FC = () => {
   
   const { evaluatedKPIs, flaggedCount } = useKPIEvaluation(filteredKPIs, activeRules);
   
+  // Debug logging
+  useEffect(() => {
+    console.log("Active rules changed:", activeRules.length);
+    console.log("Flagged KPIs:", flaggedCount);
+  }, [activeRules, flaggedCount]);
+  
   return (
-    <Layout className="bg-slate-50">
+    <Layout className={cn("bg-slate-50")}>
       <div className="container mx-auto px-4 py-6">
         <DashboardHeader
           businessUnitFilter={businessUnitFilter}
@@ -38,7 +45,10 @@ const Dashboard: React.FC = () => {
           totalKPIs={filteredKPIs.length}
         />
         
-        <DashboardCharts filteredKPIs={filteredKPIs} />
+        <DashboardCharts filteredKPIs={evaluatedKPIs.map(item => ({
+          ...item.kpi,
+          hasFlagged: item.flaggedRules.length > 0
+        }))} />
         
         <KPIDetailTable evaluatedKPIs={evaluatedKPIs} />
         

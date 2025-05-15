@@ -14,6 +14,11 @@ interface RuleItemProps {
 }
 
 const RuleItem: React.FC<RuleItemProps> = ({ rule, onToggle, onDelete }) => {
+  const handleToggle = () => {
+    console.log(`Toggle rule: ${rule.id} - ${rule.name} (current: ${rule.isActive})`);
+    onToggle();
+  };
+
   return (
     <Card className={cn("mb-4 transition-all", 
       !rule.isActive && "opacity-60")}>
@@ -25,7 +30,7 @@ const RuleItem: React.FC<RuleItemProps> = ({ rule, onToggle, onDelete }) => {
         <div className="flex items-center gap-4">
           <Switch
             checked={rule.isActive}
-            onCheckedChange={onToggle}
+            onCheckedChange={handleToggle}
             aria-label={`Toggle ${rule.name}`}
           />
           <Button 
