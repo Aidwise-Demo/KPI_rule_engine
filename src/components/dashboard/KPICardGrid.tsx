@@ -11,6 +11,14 @@ interface KPICardGridProps {
 }
 
 const KPICardGrid: React.FC<KPICardGridProps> = ({ evaluatedKPIs }) => {
+  if (evaluatedKPIs.length === 0) {
+    return (
+      <div className="py-6 text-center text-muted-foreground">
+        No KPIs match the current filters and rules.
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {evaluatedKPIs.map(({ kpi, flaggedRules }) => (

@@ -18,6 +18,14 @@ const KPITable: React.FC<KPITableProps> = ({ kpis }) => {
     'To Commence': 'bg-gray-500 text-white',
   };
 
+  if (kpis.length === 0) {
+    return (
+      <div className="py-6 text-center text-muted-foreground">
+        No KPIs match the current filters and rules.
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-auto">
       <Table>
