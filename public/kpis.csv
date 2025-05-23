@@ -1,0 +1,9 @@
+id	name	businessUnit	department	owner	target	actual	status	objectiveContribution	type	objective	quarterlyPerformance.q1	quarterlyPerformance.q2	quarterlyPerformance.q3	quarterlyPerformance.q4	benchmark
+kpi1	Customer Satisfaction Score	Corporate Division	Customer Experience	Jane Smith	85	78	On Track	25	Strategic	Improve Customer Experience	65	55	78	0	95
+kpi2	Revenue Growth	Corp Branch	Finance	John Doe	15	12	Alert	35	Strategic	Expand the business	16	14	12	0	18
+kpi3	Employee Engagement	Corporate Division	HR	Dylan Green	80	41	On Track	20	Strategic	Improve employee satisfaction	42	41	41	0	90
+kpi4	Cost Reduction	null	null	Business Head	10	8	Off Track	15	Operational	Improve cyber resilience	5	6	8	0	12
+kpi5	Product Development Cycle	Corp Branch	Product	James Miller	null	45	To Commence	8	Strategic	Improve productivity	0	0	0	0	30
+kpi6	Market Share	Corporate Division	Marketing	Stephen Gmel	25	22	On Track	30	Strategic	Expand the business	20	21	22	0	40
+kpi7	IT System Uptime	Dept of SI	IT	Division Owner	99.9	99.7	On Track	5	Operational	Improve cyber resilience	99.8	99.7	99.7	0	99.99
+kpi8	Training Completion Rate	Education Programs	HR	null	95	87	Alert	10	Strategic	Drive collaboration	90	88	87	0	100

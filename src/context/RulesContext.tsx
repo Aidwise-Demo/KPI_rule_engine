@@ -1,8 +1,8 @@
-
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { Rule, defaultRules } from '@/types/rules';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { Rule } from '@/types/rules';
 import { nanoid } from 'nanoid';
 import { useToast } from '@/components/ui/use-toast';
+import { useRulesData } from "@/data/rulesData";
 
 interface RulesContextType {
   rules: Rule[];
@@ -14,14 +14,24 @@ interface RulesContextType {
 const RulesContext = createContext<RulesContextType | undefined>(undefined);
 
 export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [rules, setRules] = useState<Rule[]>(defaultRules);
+  const { rules: loadedRules, loading } = useRulesData("/rules.csv");
+  const [rules, setRules] = useState<Rule[]>([]);
   const { toast } = useToast();
 
+  // Sync rules from CSV on load
+  useEffect(() => {
+    if (!loading && loadedRules.length > 0) {
+      setRules(loadedRules);
+    }
+  }, [loading, loadedRules]);
+
   const toggleRule = (id: string) => {
-    setRules(rules.map(rule => 
-      rule.id === id ? { ...rule, isActive: !rule.isActive } : rule
-    ));
-    
+    setRules(prevRules =>
+      prevRules.map(rule =>
+        rule.id === id ? { ...rule, isActive: !rule.isActive } : rule
+      )
+    );
+
     const rule = rules.find(r => r.id === id);
     if (rule) {
       toast({
@@ -38,8 +48,8 @@ export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       description,
       isActive: true
     };
-    
-    setRules([...rules, newRule]);
+
+    setRules(prevRules => [...prevRules, newRule]);
     toast({
       title: "Rule added",
       description: name
@@ -48,8 +58,8 @@ export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const deleteRule = (id: string) => {
     const rule = rules.find(r => r.id === id);
-    setRules(rules.filter(rule => rule.id !== id));
-    
+    setRules(prevRules => prevRules.filter(rule => rule.id !== id));
+
     if (rule) {
       toast({
         title: "Rule deleted",

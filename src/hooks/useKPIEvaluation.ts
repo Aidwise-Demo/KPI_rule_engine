@@ -19,7 +19,11 @@ export const useKPIEvaluation = (kpis: KPI[], activeRules: Rule[]) => {
               
             case "rule3": // KPI linked to multiple conflicting objectives
               // Simplified check - would need real data for proper implementation
-              return kpi.objective.includes("Improve") && kpi.objective.includes("Expand");
+                return (
+    typeof kpi.objective === "string" &&
+    kpi.objective.includes("Improve") &&
+    kpi.objective.includes("Expand")
+  );
               
             case "rule4": // KPI marked as strategic but shows < 10% contribution
               return kpi.type === "Strategic" && kpi.objectiveContribution < 10;

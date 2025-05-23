@@ -8,11 +8,16 @@ import DashboardCharts from '@/components/dashboard/DashboardCharts';
 import KPIDetailTable from '@/components/dashboard/KPIDetailTable';
 import KPICardGrid from '@/components/dashboard/KPICardGrid';
 import { cn } from '@/lib/utils';
+import { useKPIData } from "@/data/kpiData";
 
 const Dashboard: React.FC = () => {
   const { rules } = useRules();
   const activeRules = rules.filter(rule => rule.isActive);
-  
+
+  // Load KPIs from CSV
+  const { kpis, loading } = useKPIData("/kpis.csv");
+
+  // Pass loaded KPIs to filter hook
   const {
     businessUnitFilter,
     setBusinessUnitFilter,
@@ -20,43 +25,36 @@ const Dashboard: React.FC = () => {
     setKPITypeFilter,
     businessUnits,
     filteredKPIs
-  } = useKPIFilters();
-  
+  } = useKPIFilters(kpis);
+
   const { evaluatedKPIs } = useKPIEvaluation(filteredKPIs, rules);
-  
+
   // Only show KPIs that are NOT flagged by active rules
   const displayedKPIs = useMemo(() => {
     return evaluatedKPIs
       .filter(item => {
-        // If no rules are active, show all KPIs
         if (activeRules.length === 0) return true;
-        
-        // For each active rule, check if this KPI is flagged by it
         const activeRuleIds = activeRules.map(rule => rule.id);
         const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
           const flaggingRule = rules.find(r => r.name === flaggedRule);
           return flaggingRule && activeRuleIds.includes(flaggingRule.id);
         });
-        
-        // Only display KPIs that are NOT flagged by any active rules
         return !flaggedByActiveRules;
       })
       .map(item => ({
         ...item.kpi,
-        hasFlagged: false // They're not flagged since we're filtering those out
+        hasFlagged: false
       }));
   }, [evaluatedKPIs, activeRules, rules]);
-  
-  // Debug logging
+
   useEffect(() => {
     console.log("Active rules changed:", activeRules.length);
     console.log("Total KPIs:", filteredKPIs.length);
     console.log("Displayed KPIs after filtering:", displayedKPIs.length);
   }, [activeRules, filteredKPIs.length, displayedKPIs.length]);
-  
-  // Count of KPIs removed by active rules
+
   const removedCount = filteredKPIs.length - displayedKPIs.length;
-  
+
   return (
     <Layout className={cn("bg-slate-50")}>
       <div className="container mx-auto px-4 py-6">
@@ -70,34 +68,26 @@ const Dashboard: React.FC = () => {
           flaggedCount={removedCount}
           totalKPIs={filteredKPIs.length}
         />
-        
+
         <DashboardCharts filteredKPIs={displayedKPIs} />
-        
+
         <KPIDetailTable evaluatedKPIs={evaluatedKPIs.filter(item => {
-          // If no rules are active, show all KPIs
           if (activeRules.length === 0) return true;
-          
-          // Otherwise, show KPIs that aren't flagged by any active rule
           const activeRuleIds = activeRules.map(rule => rule.id);
           const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
             const flaggingRule = rules.find(r => r.name === flaggedRule);
             return flaggingRule && activeRuleIds.includes(flaggingRule.id);
           });
-          
           return !flaggedByActiveRules;
         })} />
-        
+
         <KPICardGrid evaluatedKPIs={evaluatedKPIs.filter(item => {
-          // If no rules are active, show all KPIs
           if (activeRules.length === 0) return true;
-          
-          // Otherwise, show KPIs that aren't flagged by any active rule
           const activeRuleIds = activeRules.map(rule => rule.id);
           const flaggedByActiveRules = item.flaggedRules.some(flaggedRule => {
             const flaggingRule = rules.find(r => r.name === flaggedRule);
             return flaggingRule && activeRuleIds.includes(flaggingRule.id);
           });
-          
           return !flaggedByActiveRules;
         })} />
       </div>

@@ -1,0 +1,12 @@
+id	name	description	isActive
+rule1	KPI benchmark >150% of internal target	Highlights KPIs that significantly exceed internal targets	TRUE
+rule2	KPI is not linked to any BU or Department	Identifies KPIs without proper organizational alignment	TRUE
+rule3	KPI linked to multiple conflicting objectives	Flags KPIs that have contradictory objective linkages	TRUE
+rule4	KPI marked as strategic but shows < 10% contribution to objective	Identifies strategic KPIs with minimal impact	TRUE
+rule5	KPI performance < 60% for 2 consecutive quarters	Flags consistently underperforming KPIs	TRUE
+rule6	"KPI status is ""On Track"" but actuals are below 50% of target"	Identifies potentially miscategorized KPIs	TRUE
+rule7	KPI target not defined for current FY	Highlights KPIs missing target definitions	TRUE
+rule8	"Objective has more than 5 KPIs of type ""Strategic"""	Flags objectives with too many strategic KPIs	TRUE
+rule9	Objective has no assigned KPI Owner	Identifies objectives lacking ownership	TRUE
+rule10	Operational KPI reported at BU level only	Highlights operational KPIs with limited reporting scope	TRUE
+rule11	Strategic Objective has 0 linked KPIs	Flags strategic objectives without associated KPIs	TRUE
