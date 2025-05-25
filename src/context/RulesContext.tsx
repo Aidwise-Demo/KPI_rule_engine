@@ -1,32 +1,37 @@
-
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { Rule, defaultRules } from '@/types/rules';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { Rule } from '@/types/rules';
 import { nanoid } from 'nanoid';
 import { useToast } from '@/components/ui/use-toast';
+import { useRulesData } from "@/data/rulesData";
 
 interface RulesContextType {
   rules: Rule[];
   toggleRule: (id: string) => void;
   addRule: (name: string, description: string) => void;
   deleteRule: (id: string) => void;
-  exportRulesToCSV: () => void;
-  importRulesFromCSV: (file: File) => Promise<void>;
 }
 
 const RulesContext = createContext<RulesContextType | undefined>(undefined);
 
-// Local Storage key
-const RULES_STORAGE_KEY = 'kpi-dashboard-rules';
-
 export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [rules, setRules] = useState<Rule[]>(defaultRules);
+  const { rules: loadedRules, loading } = useRulesData("/rules.csv");
+  const [rules, setRules] = useState<Rule[]>([]);
   const { toast } = useToast();
 
+  // Sync rules from CSV on load
+  useEffect(() => {
+    if (!loading && loadedRules.length > 0) {
+      setRules(loadedRules);
+    }
+  }, [loading, loadedRules]);
+
   const toggleRule = (id: string) => {
-    setRules(rules.map(rule => 
-      rule.id === id ? { ...rule, isActive: !rule.isActive } : rule
-    ));
-    
+    setRules(prevRules =>
+      prevRules.map(rule =>
+        rule.id === id ? { ...rule, isActive: !rule.isActive } : rule
+      )
+    );
+
     const rule = rules.find(r => r.id === id);
     if (rule) {
       toast({
@@ -43,8 +48,8 @@ export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       description,
       isActive: true
     };
-    
-    setRules([...rules, newRule]);
+
+    setRules(prevRules => [...prevRules, newRule]);
     toast({
       title: "Rule added",
       description: name
@@ -53,8 +58,8 @@ export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const deleteRule = (id: string) => {
     const rule = rules.find(r => r.id === id);
-    setRules(rules.filter(rule => rule.id !== id));
-    
+    setRules(prevRules => prevRules.filter(rule => rule.id !== id));
+
     if (rule) {
       toast({
         title: "Rule deleted",
@@ -64,64 +69,8 @@ export const RulesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
   };
 
-  // Export rules to CSV
-  const exportRulesToCSV = () => {
-    const csvContent = convertRulesToCSV(rules);
-    downloadCSV(csvContent, 'kpi-rules.csv');
-    
-    toast({
-      title: "Rules exported",
-      description: `${rules.length} rules exported to CSV`
-    });
-  };
-
-  // Import rules from CSV
-  const importRulesFromCSV = async (file: File): Promise<void> => {
-    try {
-      const content = await new Promise<string>((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => resolve(e.target?.result as string || '');
-        reader.onerror = (e) => reject(e);
-        reader.readAsText(file);
-      });
-      
-      const importedRules = parseRulesCSV(content);
-      
-      if (importedRules.length === 0) {
-        toast({
-          title: "Import failed",
-          description: "No valid rules found in CSV file",
-          variant: "destructive"
-        });
-        return;
-      }
-      
-      setRules(importedRules);
-      saveRulesToStorage(importedRules);
-      
-      toast({
-        title: "Rules imported",
-        description: `${importedRules.length} rules imported from CSV`
-      });
-    } catch (error) {
-      console.error('Error importing CSV:', error);
-      toast({
-        title: "Import failed",
-        description: "Could not read the CSV file",
-        variant: "destructive"
-      });
-    }
-  };
-
   return (
-    <RulesContext.Provider value={{ 
-      rules, 
-      toggleRule, 
-      addRule, 
-      deleteRule,
-      exportRulesToCSV,
-      importRulesFromCSV
-    }}>
+    <RulesContext.Provider value={{ rules, toggleRule, addRule, deleteRule }}>
       {children}
     </RulesContext.Provider>
   );
