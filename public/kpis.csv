@@ -1,9 +1,89 @@
-id	name	businessUnit	department	owner	target	actual	status	objectiveContribution	type	objective	quarterlyPerformance.q1	quarterlyPerformance.q2	quarterlyPerformance.q3	quarterlyPerformance.q4	benchmark
-kpi1	Customer Satisfaction Score	Entertainmnet	Customer Experience	Jane Smith	85	78	On Track	25	Strategic	Improve Customer Experience	65	55	78	0	95
-kpi2	Revenue Growth	Real Estates	Finance	John Doe	15	12	Alert	35	Strategic	Expand the business	16	14	12	0	18
-kpi3	Employee Engagement	Entertainmnet	HR	Dylan Green	80	41	On Track	20	Strategic	Improve employee satisfaction	42	41	41	0	90
-kpi4	Cost Reduction	null	null	Business Head	10	8	Off Track	15	Operational	Improve cyber resilience	5	6	8	0	12
-kpi5	Product Development Cycle	Real Estates	Product	James Miller	null	45	To Commence	8	Strategic	Improve productivity	0	0	0	0	30
-kpi6	Market Share	Entertainmnet	Marketing	Stephen Gmel	25	22	On Track	30	Strategic	Expand the business	20	21	22	0	40
-kpi7	IT System Uptime	Asset Management	IT	Division Owner	99.9	99.7	On Track	5	Operational	Improve cyber resilience	99.8	99.7	99.7	0	99.99
-kpi8	Training Completion Rate	Asset Management	HR	null	95	87	Alert	10	Strategic	Drive collaboration	90	88	87	0	100
+id,name,businessUnit,department,owner,target,actual,status,objectiveContribution,type,objective,quarterlyPerformance.q1,quarterlyPerformance.q2,quarterlyPerformance.q3,quarterlyPerformance.q4,benchmark
+kpi1,Increase the productivity,N/A,N/A,,7,75,>= Target,,Initiatives KPI,Misaligned Initiatives,75.16421394,94.88043091,95.37028703,98.44008738,41
+kpi2,Premier Property Revenue,N/A,N/A,,123456,1200000,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,70.59813329,99.1603371,83.64201725,97.01917851,661728
+kpi3,test,N/A,N/A,,30,100,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,83.21662578,75.25494152,79.47842933,81.10015568,65
+kpi4,Wellness share of TR,Jumeirah,Jumeirah,Alexander Lee,1.2,1.4,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,72.91913845,79.58937519,88.73822194,87.84990591,1.3
+kpi5,Average spend per guest,Jumeirah,Jumeirah,Alexander Lee,714.74,1295,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,94.31671479,88.92260867,75.99266366,93.95616801,1004.87
+kpi6,Brand audit score by property (%),Jumeirah,Jumeirah,Thomas Meier,63,70,<= 10% Deviation,,Initiatives KPI,Misaligned Initiatives,94.05373092,94.52045596,93.83855673,88.92217181,66.5
+kpi7,Brand audit score by channel (%),Jumeirah,Jumeirah,Thomas Meier,69,70,<= 10% Deviation,,Initiatives KPI,Misaligned Initiatives,90.63967829,89.54041835,99.34607887,92.85895798,69.5
+kpi8,Capex savings from MOUs,Real Estate,Real Estate,Mariam Juma,182376151.8,25000000,>= Target,,Initiatives KPI,Optimize Risks,75.33973061,92.84246494,83.84656316,98.02833715,103688075.9
+kpi9,% of projects meeting handover timelines,Real Estate,Real Estate,Mariam Juma,105,100,>= Target,,Initiatives KPI,Maximize Earnings,92.51701988,78.53439913,73.80273193,74.90304402,102.5
+kpi10,VOWD,Real Estate,Real Estate,Mariam Juma,2300000000,2030375769,>= Target,,Initiatives KPI,Maximize Earnings,76.6100453,98.34659862,88.08316407,71.85060816,2165187885
+kpi11,Rental lease revenue,Hospitality,Hospitality,Michael Heyes,118078731,115188927,>= Target,,Initiatives KPI,Maximize Earnings,99.33061347,94.40755445,99.3253287,91.85302467,116633829
+kpi12,Number of AI use cases delivered,Group Services,Group Services,Tim Whiteside,1,0,>= Target,,Initiatives KPI,Optimize Risks,74.68220157,85.32839685,75.54702906,81.88491015,0.5
+kpi13,Number of RPA use cases delivered,Group Services,Group Services,Tim Whiteside,6,6,>= Target,,Initiatives KPI,Optimize Risks,90.53218274,81.79864363,74.94125287,90.32772457,6
+kpi14,F&B Revenue,Hospitality,Hospitality,Michael Heyes,576531428,604096201,<= 10% Deviation,,Initiatives KPI,Maximize Earnings,70.95204941,73.48848326,89.01316598,72.7508697,590313814.5
+kpi15,Outlets producing AED +50m topline,Jumeirah,Jumeirah,Thomas Meier,0,0,Not measurable,,Initiatives KPI,Misaligned Initiatives,89.71775803,71.76896656,91.26788421,75.50911747,0
+kpi16,Elite transacting members (#),Jumeirah,Jumeirah,Michael Grieve,12118,28250,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,71.62327663,83.97581496,99.61113322,84.10402768,20184
+kpi17,J.com penetration – UAE Hotels (% of RR),Jumeirah,Jumeirah,Alexander Lee,21.3,22.3,<= 10% Deviation,,Initiatives KPI,Misaligned Initiatives,80.59578058,78.99119853,97.3020814,76.05133186,21.8
+kpi18,Loyalty members distinct revenue contribution,Jumeirah,Jumeirah,Michael Grieve,112685689,412759081,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,88.35743454,89.67269514,92.28289219,88.88729926,262722385
+kpi19,J.com penetration – International Hotels (% of RR),Jumeirah,Jumeirah,Alexander Lee,10.6,10.8,<= 10% Deviation,,Initiatives KPI,Misaligned Initiatives,76.32811465,76.97599523,97.94388184,82.02609167,10.7
+kpi20,Total signed value of Nakheel contracts,Ejadah,Ejadah,Stuart Waddell,6800000,15000000,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,74.91941202,99.44593167,91.24814727,95.52296267,10900000
+kpi21,# of IO members,Jumeirah,Jumeirah,Thomas Meier,5,20,> 10% Deviation,,Initiatives KPI,Misaligned Initiatives,70.40096228,78.13861512,87.87629193,81.23432496,12.5
+kpi22,Revenue under Management,Jumeirah,Jumeirah,,1551600000,1640000000,<= 10% Deviation,,Core Measures,Maximize Earnings,75.24524898,90.41028565,77.43431719,87.05327305,1595800000
+kpi23,EBITDA,Jumeirah,Jumeirah,,66200000,49610000,>= Target,,Core Measures,Maximize Earnings,94.77412885,94.23619783,73.94959207,80.03503849,57905000
+kpi24,RGI on Rooms Revenue,Jumeirah,Jumeirah,,126,126,>= Target,,Core Measures,Maximize Earnings,82.2795272,98.70575475,71.19037922,79.31571656,126
+kpi25,CSI,Jumeirah,Jumeirah,,9.03,9,>= Target,,Core Measures,Advance Dubai,84.13409995,89.40559988,88.28577559,80.01031184,9.015
+kpi26,LQA,Jumeirah,Jumeirah,,87.3,86,>= Target,,Core Measures,Advance Dubai,80.47409864,94.59069071,93.57939044,79.80488114,86.65
+kpi27,Revenue,Ejadah,Ejadah,,322283000,284000000,>= Target,,Core Measures,Maximize Earnings,90.50605199,95.40956941,89.25023799,88.88699387,303141500
+kpi28,Revenue,Entertainment,Entertainment,,892411758,923188666,<= 10% Deviation,,Core Measures,Maximize Earnings,71.46301689,72.03850162,92.052328,74.07994099,907800212
+kpi29,Closure of high-risk audit findings,Entertainment,Entertainment,,65,85,> 10% Deviation,,Core Measures,Optimize Risks,86.71238043,87.02844915,92.00674489,76.46807785,75
+kpi30,ROE,Land Estates,Land Estates,,12,1,>= Target,,Core Measures,Maximize Earnings,80.23929002,81.02468598,70.15968181,87.52592017,6.5
+kpi31,ROE,Real Estate,Real Estate,,43.84,35,>= Target,,Core Measures,Maximize Earnings,80.59596649,78.11870435,83.97579438,84.88297534,39.42
+kpi32,Closure of high risk audit findings,N/A,N/A,,75,85,> 10% Deviation,,Core Measures,Misaligned Initiatives,89.72401903,94.73017379,85.19320135,85.14917808,80
+kpi33,Emiratization,N/A,N/A,,132,146,<= 10% Deviation,,Core Measures,Misaligned Initiatives,87.23350177,75.23357323,76.61870823,94.30468732,139
+kpi34,Closure of high-risk audit findings (%),N/A,N/A,,85,85,>= Target,,Core Measures,Misaligned Initiatives,86.57315263,82.14996554,97.70821541,87.71394623,85
+kpi35,Revenue,Hospitality,Hospitality,,1809566448,1898800398,<= 10% Deviation,,Core Measures,Maximize Earnings,91.33846745,74.21733209,70.14860981,93.60453324,1854183423
+kpi36,Capex projects meeting planned delivery  milestones and budget,Hospitality,Hospitality,,99.8,100,<= 10% Deviation,,Core Measures,Optimize Risks,97.21135998,93.63231092,91.04899179,93.92320944,99.9
+kpi37,Carbon emission reduction from electricity & cooling,N/A,N/A,,9,8,>= Target,,Core Measures,Misaligned Initiatives,98.66656081,78.98738327,89.73300834,93.2558431,8.5
+kpi38,Closure of high risk audit findings,N/A,N/A,,25.69,85,> 10% Deviation,,Core Measures,Misaligned Initiatives,79.4668212,73.70598404,83.65706752,85.44508272,55.345
+kpi39,Emiratization,N/A,N/A,,154,167,<= 10% Deviation,,Core Measures,Misaligned Initiatives,88.28201551,75.39013911,80.74561317,94.23691978,160.5
+kpi40,Waste diversion,N/A,N/A,,10.11,6,>= Target,,Core Measures,Misaligned Initiatives,89.17994562,75.61874505,89.65298497,84.48802909,8.055
+kpi41,Closure of high risk audit findings,N/A,N/A,,50,85,> 10% Deviation,,Core Measures,Misaligned Initiatives,86.15141112,88.55675904,88.5485787,86.7434894,67.5
+kpi42,Emiratization,N/A,N/A,,71,70,>= Target,,Core Measures,Misaligned Initiatives,80.53257296,75.83044841,94.9415051,99.52574063,70.5
+kpi43,Emiratization,N/A,N/A,,21,22,<= 10% Deviation,,Core Measures,Misaligned Initiatives,82.67312338,81.0441505,77.33064462,96.52172561,21.5
+kpi44,Net Profit,N/A,N/A,,3667000,30000,>= Target,,Core Measures,Misaligned Initiatives,95.82464674,90.26297567,74.77654439,71.46852843,1848500
+kpi45,Procurement Service Quality as per SLA,N/A,N/A,,102,100,>= Target,,Core Measures,Misaligned Initiatives,94.56656602,97.61214325,88.15901167,85.82381353,101
+kpi46,Human Capital Service Quality as per SLA,N/A,N/A,,99,100,<= 10% Deviation,,Core Measures,Misaligned Initiatives,87.96089005,79.81728538,97.71150165,71.60950357,99.5
+kpi47,Emiratization,N/A,N/A,,43,44,<= 10% Deviation,,Core Measures,Misaligned Initiatives,81.63281699,79.0184042,86.95511645,82.19336009,43.5
+kpi48,Sales,Real Estate,Real Estate,,11700000000,10790778429,>= Target,,Core Measures,Maximize Earnings,80.91372293,90.92364679,75.60518332,97.39375464,11245389215
+kpi49,Revenue,Asset Management,Asset Management,,1255239000,1160859000,>= Target,,Core Measures,Maximize Earnings,93.11098003,82.51774742,76.65417175,76.48899789,1208049000
+kpi50,EBITDA,Asset Management,Asset Management,,887967000,750500000,>= Target,,Core Measures,Maximize Earnings,98.67229951,99.15284482,89.41414934,92.55364354,819233500
+kpi51,Receivables > 90 days as a % of revenue,Asset Management,Asset Management,,4.88,2.5,> 10% Deviation,,Core Measures,Optimize Risks,95.75686826,82.322985,91.52962723,89.90236897,3.69
+kpi52,Customer Satisfaction - blended,Asset Management,Asset Management,,83,84,<= 10% Deviation,,Core Measures,Advance Dubai,97.63436456,77.91090422,71.32229406,74.55818133,83.5
+kpi53,Collections,Real Estate,Real Estate,,8300000000,5798862598,>= Target,,Core Measures,Optimize Risks,71.57149937,77.57223221,80.1438953,79.02043217,7049431299
+kpi54,EBITDA,N/A,N/A,,1388649000,1230183000,>= Target,,Core Measures,Misaligned Initiatives,95.81645964,72.21212356,90.18430372,76.74869835,1309416000
+kpi55,Distributions from investments,N/A,N/A,,1053523000,1277457000,> 10% Deviation,,Core Measures,Misaligned Initiatives,75.68779918,84.73388726,99.00129046,73.05498897,1165490000
+kpi56,Revenue from Jumeirah.com direct bookings,Jumeirah,Jumeirah,,19,21,<= 10% Deviation,,Core Measures,Maximize Earnings,72.69568482,91.01057692,74.59302192,79.87230165,20
+kpi57,EBITDA,Ejadah,Ejadah,,36924000,31600000,>= Target,,Core Measures,Maximize Earnings,88.84265513,90.01851156,71.20407654,90.90172509,34262000
+kpi58,Receivables > 90 days as a % of revenue,Ejadah,Ejadah,,3.79,3,> 10% Deviation,,Core Measures,Optimize Risks,92.5794323,97.10640532,95.91850348,98.17534838,3.395
+kpi59,EBITDA,Entertainment,Entertainment,,521060346,519161385,>= Target,,Core Measures,Maximize Earnings,89.08878332,83.36955658,89.24688845,93.60952888,520110865.5
+kpi60,DPR EBITDA,Entertainment,Entertainment,,35909307,44952397,> 10% Deviation,,Core Measures,Maximize Earnings,96.53094793,94.14419792,94.24438609,95.70876176,40430852
+kpi61,ROE,Entertainment,Entertainment,,37.1,40.14,<= 10% Deviation,,Core Measures,Maximize Earnings,71.89210989,72.58942022,99.83362628,73.26887987,38.62
+kpi62,ROE,Entertainment,Entertainment,,37.1,40.14,<= 10% Deviation,,Core Measures,Optimize Risks,74.82737799,79.70300884,92.5829411,90.85453982,38.62
+kpi63,CSAT,Entertainment,Entertainment,,88.73,85,>= Target,,Core Measures,Maximize Earnings,76.86427333,87.87564799,93.52023409,75.72368061,86.865
+kpi64,Reductions in carbon emissions from electricity and cooling per revenue vs. 2023,Entertainment,Entertainment,,29.2,10.5,>= Target,,Core Measures,Maximize Earnings,92.08437371,97.17345251,70.39984648,98.45708287,19.85
+kpi65,Sales,Land Estates,Land Estates,,790749506,486394037,>= Target,,Core Measures,Maximize Earnings,72.40758284,70.13166887,77.94548442,96.63294778,638571771.5
+kpi66,Revenue,Land Estates,Land Estates,,2108675000,570046000,>= Target,,Core Measures,Maximize Earnings,89.48126478,81.18917059,71.01439721,74.15946938,1339360500
+kpi67,EBITDA,Land Estates,Land Estates,,3078503000,253134000,>= Target,,Core Measures,Maximize Earnings,93.55191298,76.9758838,76.08568842,97.34559778,1665818500
+kpi68,Revenue,Real Estate,Real Estate,,5940000000,4654508025,>= Target,,Core Measures,Maximize Earnings,85.10222849,86.16569231,75.93319708,98.15956212,5297254013
+kpi69,EBITDA,Real Estate,Real Estate,,2350000000,1534140135,>= Target,,Core Measures,Maximize Earnings,77.16778156,83.25931769,93.871576,94.4223177,1942070068
+kpi70,Carbon emission reduction from electricity & cooling,N/A,N/A,,5.71,4,>= Target,,Core Measures,Misaligned Initiatives,91.88175239,76.2164281,70.14859697,74.03324264,4.855
+kpi71,Emiratization,N/A,N/A,,106,118,> 10% Deviation,,Core Measures,Misaligned Initiatives,73.03576062,76.59958695,87.14014585,80.1279544,112
+kpi72,LEED certification readiness for key developments,N/A,N/A,,25,25,>= Target,,Core Measures,Misaligned Initiatives,83.92214712,86.45467391,88.08308735,70.53215369,25
+kpi73,EBITDA,Hospitality,Hospitality,,738933768,753480404,<= 10% Deviation,,Core Measures,Maximize Earnings,84.12603099,94.9167738,88.17053695,70.63472959,746207086
+kpi74,ROE,Hospitality,Hospitality,,3.774,4.08,<= 10% Deviation,,Core Measures,Maximize Earnings,86.36654431,97.260206,71.75842686,99.51778804,3.927
+kpi75,RGI on Rooms Revenue,Hospitality,Hospitality,,141.6,142.1,<= 10% Deviation,,Core Measures,Maximize Earnings,70.89392798,77.57906816,80.16410998,86.10914689,141.85
+kpi76,Closure of high-risk audit findings,N/A,N/A,,72,85,> 10% Deviation,,Core Measures,Misaligned Initiatives,90.38677932,91.70879523,72.74682994,99.89710298,78.5
+kpi77,Revenue,Community Management,Community Management,,94157786.46,95127420,<= 10% Deviation,,Core Measures,Maximize Earnings,94.65707404,98.29481153,79.56509328,95.29956678,94642603.23
+kpi78,EBITDA,Community Management,Community Management,,43743220,29792011.65,>= Target,,Core Measures,Maximize Earnings,80.51221375,98.20619197,97.32209294,85.41285768,36767615.83
+kpi79,Service fee collection,Community Management,Community Management,,403171967,370000000,>= Target,,Core Measures,Optimize Risks,99.19057593,97.95822608,97.60661736,93.05531115,386585983.5
+kpi80,Closure of high risk audit findings,N/A,N/A,,100,85,>= Target,,Core Measures,Misaligned Initiatives,93.29440997,84.68902685,90.07530819,71.22713855,92.5
+kpi81,Emiratization,N/A,N/A,,24,24,>= Target,,Core Measures,Misaligned Initiatives,92.35914135,84.22121834,92.26186031,97.82420531,24
+kpi82,Manpower CTC,N/A,N/A,,33760000,35890000,>= Target,,Core Measures,Misaligned Initiatives,83.22187753,98.63651459,94.03525092,72.20741988,34825000
+kpi83,Cost reduction in goods and services acquisition,N/A,N/A,,3.2,6.5,> 10% Deviation,,Core Measures,Misaligned Initiatives,83.0516251,73.57635136,71.12736034,98.70210971,4.85
+kpi84,Finance Service Quality as per SLA,N/A,N/A,,73,100,> 10% Deviation,,Core Measures,Misaligned Initiatives,88.34688065,81.10705938,89.32749792,92.49827009,86.5
+kpi85,Increase locally supplied goods & services,N/A,N/A,,3,2.5,>= Target,,Core Measures,Misaligned Initiatives,87.9832975,96.76782324,80.01470718,79.47137391,2.75
+kpi86,Closure of high risk audit findings,N/A,N/A,,85,85,>= Target,,Core Measures,Misaligned Initiatives,79.41178908,74.74710876,87.77058442,85.7093174,85
+kpi87,ROE,Asset Management,Asset Management,,8.52,7.63,>= Target,,Core Measures,Maximize Earnings,79.84552376,74.33487183,93.53672835,71.12039757,8.075
+kpi88,ESG screening of all investments,N/A,N/A,,100,100,>= Target,,Core Measures,Misaligned Initiatives,85.58518487,89.64442159,91.59800882,77.08313314,100

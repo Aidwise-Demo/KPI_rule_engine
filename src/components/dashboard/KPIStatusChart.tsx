@@ -23,12 +23,12 @@ const KPIStatusChart: React.FC<KPIStatusChartProps> = ({ kpis }) => {
   }, [kpis]);
 
   const COLORS = {
-    'On Track': '#4ade80',
-    'Off Track': '#ef4444',
-    'Alert': '#f59e0b',
-    'Harvested': '#3b82f6',
-    'To Commence': '#6b7280',
-  };
+
+  '>= Target': 'bg-green-500 text-white',
+  '<= 10% Deviation': 'bg-amber-500 text-white',
+  '> 10% Deviation': 'bg-red-500 text-white',
+  'Not measurable': 'bg-gray-500 text-white',
+};
 
   const chartConfig = {
     onTrack: { label: 'On Track', theme: { light: '#4ade80', dark: '#4ade80' } },

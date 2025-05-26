@@ -10,13 +10,12 @@ interface KPITableProps {
 }
 
 const KPITable: React.FC<KPITableProps> = ({ kpis }) => {
-  const statusColors: Record<string, string> = {
-    'On Track': 'bg-green-500 text-white',
-    'Off Track': 'bg-red-500 text-white',
-    'Alert': 'bg-amber-500 text-white',
-    'Harvested': 'bg-blue-500 text-white',
-    'To Commence': 'bg-gray-500 text-white',
-  };
+const statusColors: Record<string, string> = {
+  '>= Target': 'bg-green-500 text-white',
+  '<= 10% Deviation': 'bg-amber-500 text-white',
+  '> 10% Deviation': 'bg-red-500 text-white',
+  'Not measurable': 'bg-gray-500 text-white',
+};
 
   if (kpis.length === 0) {
     return (
